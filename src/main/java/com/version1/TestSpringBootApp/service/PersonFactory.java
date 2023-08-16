@@ -7,10 +7,12 @@ public class PersonFactory {
 
     private final PrintDetailsPersonService printDetailsPersonService;
     private final SaveToDBPersonService saveToDBPersonService;
+    private final RenamePersonService renamePersonService;
 
-    public PersonFactory(PrintDetailsPersonService printDetailsPersonService, SaveToDBPersonService saveToDBPersonService) {
+    public PersonFactory(PrintDetailsPersonService printDetailsPersonService, SaveToDBPersonService saveToDBPersonService, RenamePersonService renamePersonService) {
         this.printDetailsPersonService = printDetailsPersonService;
         this.saveToDBPersonService = saveToDBPersonService;
+        this.renamePersonService = renamePersonService;
     }
 
     public PersonService returnService(String handleCode) {
@@ -19,7 +21,7 @@ public class PersonFactory {
         } else if ("print".equals(handleCode)) {
             return printDetailsPersonService;
         }
-        return printDetailsPersonService;
+        return renamePersonService;
     }
 
 }
